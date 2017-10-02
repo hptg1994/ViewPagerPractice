@@ -3,5 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="tab_bg">#338b6a6a</color>
+
+    <color name="tab_indicator_color">@android:color/white</color>
 </resources>
