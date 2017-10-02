@@ -20,10 +20,11 @@ public class PageFragment extends Fragment {
 
     private TextView textView;
 
+    @NonNull
     public static PageFragment newInstance(int page) {
-
         Bundle args = new Bundle();
         args.putInt(KEY_PAGE, page);
+
         PageFragment pagefragment = new PageFragment();
         pagefragment.setArguments(args);
         return pagefragment;

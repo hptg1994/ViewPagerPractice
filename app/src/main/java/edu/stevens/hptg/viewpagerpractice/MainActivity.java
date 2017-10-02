@@ -10,39 +10,48 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        viewPager.setAdapter(new NumberPagerAdapter(getSupportFragmentManager()));
+		ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+		viewPager.setAdapter(new NumberPagerAdapter(getSupportFragmentManager()));
 
-        // One  More step to add the TabView
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.view_pager_tab);
-        tabLayout.setupWithViewPager(viewPager);
-    }
+		// One  More step to add the TabView
+		TabLayout tabLayout = (TabLayout) findViewById(R.id.view_pager_tab);
+		tabLayout.setupWithViewPager(viewPager);
 
-    private class NumberPagerAdapter extends FragmentPagerAdapter{
+		tabLayout.getTabAt(0).setIcon(R.drawable.ic_favorite_white_24dp);
+		tabLayout.getTabAt(1).setIcon(R.drawable.ic_people_white_24dp);
+		tabLayout.getTabAt(2).setIcon(R.drawable.ic_phone_white_24dp);
+		tabLayout.getTabAt(3).setIcon(R.drawable.ic_settings_white_24dp);
+		// remove the shadow of action bar
+		getSupportActionBar().setElevation(0);
+	}
 
-        public NumberPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+	private class NumberPagerAdapter extends FragmentPagerAdapter{
 
-        @Override
-        public Fragment getItem(int position) {
-            return PageFragment.newInstance(position);
-        }
+		public NumberPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
 
-        @Override
-        public int getCount() {
-            return 5;
-        }
+		@Override
+		public Fragment getItem(int position) {
+			return PageFragment.newInstance(position);
+		}
 
-        //还有这里是把文字添加到TabView上面的
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return "Page"  + position;
-        }
-    }
+		@Override
+		public int getCount() {
+			return 4;
+		}
+
+		/*
+		//还有这里是把文字添加到TabView上面的
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return "Page"  + position;
+		}
+		*/
+	}
 }
