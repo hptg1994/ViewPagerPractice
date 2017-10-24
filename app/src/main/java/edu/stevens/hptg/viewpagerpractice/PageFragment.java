@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by hptg on 2017/10/1.
  */
@@ -18,7 +21,8 @@ public class PageFragment extends Fragment {
 
     public static final String KEY_PAGE = "page";
 
-    private TextView textView;
+    @BindView(R.id.text_view) TextView textView;
+//    private TextView textView;
 
     @NonNull
     public static PageFragment newInstance(int page) {
@@ -34,7 +38,8 @@ public class PageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page_fragment,container,false);
-        textView = (TextView) view.findViewById(R.id.text_view);
+//        textView = (TextView) view.findViewById(R.id.text_view);
+        ButterKnife.bind(this,view);
         return view;
     }
 
