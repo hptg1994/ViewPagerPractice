@@ -8,24 +8,30 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+
+	@BindView(R.id.view_pager)ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+//		ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+		ButterKnife.bind(this);
 		viewPager.setAdapter(new NumberPagerAdapter(getSupportFragmentManager()));
 
 		// One  More step to add the TabView
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.view_pager_tab);
 		tabLayout.setupWithViewPager(viewPager);
 
-//		tabLayout.getTabAt(0).setIcon(R.drawable.ic_favorite_white_24dp);
-//		tabLayout.getTabAt(1).setIcon(R.drawable.ic_people_white_24dp);
-//		tabLayout.getTabAt(2).setIcon(R.drawable.ic_phone_white_24dp);
-//		tabLayout.getTabAt(3).setIcon(R.drawable.ic_settings_white_24dp);
+		tabLayout.getTabAt(0).setIcon(R.drawable.ic_favorite_white_24dp);
+		tabLayout.getTabAt(1).setIcon(R.drawable.ic_people_white_24dp);
+		tabLayout.getTabAt(2).setIcon(R.drawable.ic_phone_white_24dp);
+		tabLayout.getTabAt(3).setIcon(R.drawable.ic_settings_white_24dp);
 		// remove the shadow of action bar
 		getSupportActionBar().setElevation(0);
 	}
@@ -46,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
 			return 4;
 		}
 
-		//还有这里是把文字添加到TabView上面的
+		/*//还有这里是把文字添加到TabView上面的
 		@Override
 		public CharSequence getPageTitle(int position) {
 			return "Page"  + position;
-		}
+		}*/
 	}
 }
